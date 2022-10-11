@@ -1,0 +1,169 @@
+%section
+  .container-fluid.bg-white
+    .row
+      .col-12.px-0
+        %main{:role => "main"}
+          #carouselExampleIndicators.carousel.slide{"data-ride" => "carousel"}
+            %ol.carousel-indicators
+              - @carousels.each_with_index do |c, i|          
+                %li{:class => i == 0 ? "active" : '', "data-slide-to" => i.to_s, "data-target" => "#carouselExampleIndicators"}
+            .carousel-inner.rounded-0
+              - @carousels.each_with_index do |c, i|          
+                .carousel-item{:class => i == 0 ? "active" : ''}
+                  = image_tag c.photo, :class => "d-block w-100"
+            %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleIndicators", :role => "button"}
+              %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+              %span.sr-only Previous
+            %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleIndicators", :role => "button"}
+              %span.carousel-control-next-icon{"aria-hidden" => "true"}
+              %span.sr-only Next
+
+%section
+  .container-fluid
+    .row
+      .col.px-0
+        %figure.snip1573.hover
+          = image_tag 'q01.jpg'
+          %figcaption
+            %h1 自来水供应 
+      .col.px-0
+        %figure.snip1573.hover
+          = image_tag 'q02.jpg'
+          %figcaption
+            %h1 
+              水环境
+              %br
+              综合治理 
+      .col.px-0
+        %figure.snip1573.hover
+          = image_tag 'q03.jpg'
+          %figcaption
+            %h1 
+              "美丽乡村"
+              %br
+              污水治理
+      .col.px-0
+        %figure.snip1573.hover
+          = image_tag 'q04.jpg'
+          %figcaption
+            %h1 工程建设
+
+
+%section
+  .wsheader-container.wsabout-bg
+    .container
+      .row.mb-5
+        .col-md-12.header-title
+          %h1.text-center.wsabout-title.mb-5
+            汶上公用水务简介
+          = render 'wsjj'
+
+      .row
+        .col-12.d-flex.justify-content-between.align-items-center
+          - @matters.each do |matter|
+            .rounded{:style => "background: ##{matter.background}"}
+              %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => matter.link, :target => '_blank'}
+                %i.fa.fa-2x.mr-3{:class => "fa-#{matter.icon}"}
+                = matter.title
+          .rounded.bg-648e50
+            %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => "#", "data-target" => "#newModal", "data-toggle" => "modal", :type => "button" }
+              %i.fa.fa-map-o.fa-2x.mr-3
+              服务网点
+
+
+%section.newsbg
+  .d-flex.justify-content-center.align-items-center{:style => "height:inherit;min-height:initial;width:100%;position:absolute;left:0;background-color:#003469;opacity: 0.9;"}
+    .d-flex.align-items-center.order-12{:style => "height:200px;"}
+      .container
+        %h1.text-center{:style => "color:rgb(242,245,248);font-size:56px;font-weight:bold;font-family:Roboto, sans-serif;"} News Centres 
+        %h3.text-center{:style => "color:rgb(242,245,248);padding-top:0.25em;padding-bottom:0.25em;font-weight:normal;"} 新闻中心 
+%section
+  .w-1500
+    .row
+      - @diyi.each_with_index do |secd, index|
+        .col-sm-4.mb-5
+          .card.bg-light.border-0.rounded-0.d-block
+            .card-header.bg-transparent.text-left.pl-3.py-4.wshome-section-title.border-0
+              %span
+                = secd[:name]
+            .card-body.px-3.pt-2.pb-3
+              %ul.list-group.list-group-flush
+                - secd[:articles].each_with_index do |article, index|
+                  - if index < 4 
+                    %li.list-group-item.d-flex.flex-column.px-0.bg-transparent.border-0.pt-0
+                      = link_to info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body" do
+                        = fa_icon 'caret-right' 
+                        = truncate(article[:title], :length => 20)
+                      %span.wshome-strong
+                        = article[:pdt_date]
+            .card-footer.border-top-hr.bg-transparent
+              = link_to '查看更多 >>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-dark'
+
+
+
+
+
+#newModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "newModalLabel", :tabindex => "-1"}
+  .modal-dialog.modal-xl.modal-dialog-centered
+    .modal-content
+      -#
+        .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} x 
+      .modal-body
+        = render 'home/map'
+%section.mt-3.mb-4
+  .w-1500
+    .row
+      .col-12.d-flex.justify-content-between
+        %figure.snip1563.hover
+          %img{:alt => "sample86", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample86.jpg"}/
+          %figcaption
+            %h3 公司地址 
+            %p 
+              济宁市汶上县汶上街道普陀山路207号
+          %a{:href => "#"}
+        %figure.snip1563.hover
+          -#
+            %img{:alt => "sample86", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample86.jpg"}/
+          %figcaption
+            %h3 客服大厅 
+            %p 
+              济宁市汶上县汶上街道普陀山路与宝塔路交汇处东塔景观楼自来水收费中心
+          %a{:href => "#"}
+        %figure.snip1563.hover
+          -#
+            %img{:alt => "sample110", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample110.jpg"}/
+          %figcaption
+            %h3 客服热线 
+            %p 
+              0537-7292789
+            %p 
+              0537-7227755
+          %a{:href => "#"}
+        %figure.snip1563.hover
+          -#
+            %img{:alt => "sample59", :src => "https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample59.jpg"}/
+          %figcaption
+            %p 
+              = image_tag 'wsqrcode.jpeg'
+          %a{:href => "#"}
+
+
+
+-#
+  .row.clearmargin.clearpadding.row-image-txt
+  .col-xs-12.col-sm-6.col-md-6.clearmargin.clearpadding.col-sm-push-6
+    %img{:src => "assets/img/office-front.jpeg", :style => "width:100%;"}/
+  .col-xs-12.col-sm-6.col-md-6.col-sm-pull-6{:style => "padding:20px;"}
+    %h1 Heading
+    %hr/
+    %p
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel lorem a lectus finibus bibendum ut sagittis diam. Nunc egestas nulla in elit congue, id pellentesque ex semper. Aenean euismod tellus tincidunt massa eleifend, a efficitur lectus
+      ultricies. Aliquam bibendum et leo quis consectetur. Integer consequat consequat mauris, id porttitor sem feugiat eu. Proin ac neque eu nisi viverra mattis. Curabitur molestie lectus ac sollicitudin faucibus. Duis congue ipsum eget justo
+      egestas blandit.
+    %div{:style => "text-align:center"}
+      %button.btn.btn-light.btn-lg{:type => "button"} Lorem
+
+
+

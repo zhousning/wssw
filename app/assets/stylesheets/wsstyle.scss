@@ -1,0 +1,60 @@
+#dropdown-menu-ctn {
+  background: rgba(0,52,105,0.8);
+}
+#dropdown-menu-ctn .dropdown-item {
+  background: rgba(0,52,105,0.8);
+  color: white;
+}
+#dropdown-menu-ctn .dropdown-item:hover {
+  background: rgba(0,52,105,0.8);
+  color: white;
+  text-decoration-line: underline;
+}
+.wsabout-bg {
+  background: image_url("aboutbg.jpg") no-repeat;
+  padding-top:100px;
+  padding-bottom:175px;
+}
+.wsabout-title {
+  color: #004c99;
+  font-size: 34px;
+}
+.wsjj {
+  text-indent: 35px;
+  line-height: 33px;
+}
+.newsbg {
+  background: image_url("newst.png") no-repeat;
+  background-position: center;
+  height:500px;
+}
+.w-1500 {
+  width: 1500px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.wshome-section-title {
+  font-size: 24px;
+  color: #004c99;
+}
+.wshome-strong {
+  font-size: 16px;
+  color: #b8af7e;
+  font-family: Arial;
+  padding-left: 12px;
+}
+.border-top-hr {
+  border-top: solid 2px #004c99;
+}
+.wsfooter {
+  background: #002245;
+}
+.wsnewpaper-header {
+  background: #1756B0;
+}
+.time-tag {
+  color: #004c99;
+  font-family: Arial;
+}

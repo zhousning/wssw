@@ -1,0 +1,140 @@
+
+%section.container.py-3.bg-white.my-2
+  .row.mb-4
+    .col-md-12
+      .header-container
+        .container
+          .col-md-12.header-title
+            %h4.text-center{:style => "line-height:45px;color:#F94500;"}
+              %a.font-weight-bold{:target => "_blank", :href => "#{@home_content.dtlink}"}
+                = @home_content.dtevent
+
+  .row
+    .col-6
+      #shutterExampleIndicators.carousel.slide{"data-ride" => "carousel"}
+        %ol.carousel-indicators
+          - @shutters.each_with_index do |c, i|          
+            %li{:class => i == 0 ? "active" : '', "data-slide-to" => i.to_s, "data-target" => "#shutterExampleIndicators"}
+        .carousel-inner.rounded-0
+          - @shutters.each_with_index do |c, i|          
+            .carousel-item{:class => i == 0 ? "active" : ''}
+              = image_tag c.photo, :class => "d-block w-100"
+        %a.carousel-control-prev{"data-slide" => "prev", :href => "#shutterExampleIndicators", :role => "button"}
+          %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+          %span.sr-only Previous
+        %a.carousel-control-next{"data-slide" => "next", :href => "#shutterExampleIndicators", :role => "button"}
+          %span.carousel-control-next-icon{"aria-hidden" => "true"}
+          %span.sr-only Next
+    .col-6
+      .card.rounded-0.border.border-white.zcdy-card
+        .card-header.bg-white.text-primary.p-0.border-bottom
+          %nav
+            .index-nav-tab.nav.nav-pills{:role => "tablist"}
+              - @diyi.each_with_index do |secd, index|
+                %a.nav-item.nav-link.rounded-0{:class => index == 0 ? 'active' : '' , :id => "nav-home#{index}-tab", "aria-controls" => "nav-home#{index}", "aria-selected" => index == 0 ? 'true' : 'false' , "data-toggle" => "tab", :href => "#nav-home#{index}", :role => "tab"}
+                  = secd[:name]
+        #nav-tabContent.tab-content.py-1
+          - @diyi.each_with_index do |secd, index|
+            .tab-pane.fade{:class => index == 0 ? 'active show' : '' , :id => "nav-home#{index}", "aria-labelledby" => "nav-home#{index}-tab", :role => "tabpanel"}
+              %ul.list-group
+                - secd[:articles].each_with_index do |article, index|
+                  - if index < 3
+                    %li.list-group-item.px-0.border-0
+                      .d-flex.w-100.justify-content-between
+                        = link_to  info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "text-body" do
+                          %h5.mb-1.zchome-item-title
+                            = truncate(article[:title], :length => 23)
+                      .text-secondary
+                        = truncate(article[:content], :length => 60)
+                %li.list-group-item.px-0.border-0.text-right
+                  = link_to '更多>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'zchome-item-title'
+                    
+
+%section.my-3
+  .container.py-3.bg-white
+    .row
+      .col-12.d-flex.justify-content-between.align-items-center
+        - @matters.each do |matter|
+          .rounded{:style => "background: ##{matter.background}"}
+            %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => matter.link, :target => '_blank'}
+              %i.fa.fa-2x.mr-3{:class => "fa-#{matter.icon}"}
+              = matter.title
+        .rounded.bg-648e50
+          %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => "#", "data-target" => "#newModal", "data-toggle" => "modal", :type => "button" }
+            %i.fa.fa-map-o.fa-2x.mr-3
+            服务网点
+            
+
+
+
+%section
+  .container.px-0
+    .row
+      - @dangjian.each_with_index do |secd, index|
+        .col-sm-4.mb-4
+          .card.border-0.rounded-0.d-block
+            .card-header.text-left.px-2.pt-3.pb-2.lshome-item-title.border-0.bg-white
+              %span.font-18
+                = secd[:name]
+              %span.pull-right
+                = link_to '更多>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-secondary'
+            .card-body.px-3.pt-0.pb-3
+              %ul.list-group.list-group-flush
+                - secd[:articles].each_with_index do |article, index|
+                  - if index < 7 
+                    %li.list-group-item.d-flex.justify-content-between.align-items-center.px-0
+                      = link_to info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "font-14 text-secondary" do
+                        = truncate(article[:title], :length => 20)
+                      %span.text-secondary.font-14 
+                        = article[:pdt_date]
+
+
+
+
+%section
+  .container.px-0
+    .row
+      - @dier.each_with_index do |secd, index|
+        .col-sm-4.mb-4
+          .card.border-0.rounded-0.d-block
+            .card-header.text-left.px-2.pt-3.pb-2.lshome-item-title.border-0.bg-white
+              %span.font-18
+                = secd[:name]
+              %span.pull-right
+                = link_to '更多>>', list_secd_newspapers_path(idencode(secd[:id])), :class => 'text-secondary'
+            .card-body.px-3.pt-0.pb-3
+              %ul.list-group.list-group-flush
+                - secd[:articles].each_with_index do |article, index|
+                  - if index < 7 
+                    %li.list-group-item.d-flex.justify-content-between.align-items-center.px-0
+                      = link_to info_secd_newspaper_path(idencode(secd[:id]), idencode(article[:id])), :class => "font-14 text-secondary" do
+                        = truncate(article[:title], :length => 20)
+                      %span.text-secondary.font-14 
+                        = article[:pdt_date]
+
+
+
+%section.mb-4
+  .container.px-0
+    .row
+      .col-md-12
+        .card.rounded-0.border.border-white
+          .card-header.bg-white.p-0.border-0
+            %nav
+              .index-nav-tab.nav.nav-pills{:role => "tablist"}
+                %a.nav-item.nav-link.rounded-top.font-18.lshome-item-title{:id => "nav-carousel-tab", "aria-controls" => "nav-carousel", "aria-selected" => 'true' , "data-toggle" => "tab", :href => "#nav-carousel", :role => "tab"}
+                  图片欣赏
+          .tab-content.p-2
+            .tab-pane.fade.active.show{:id => "nav-carousel", "aria-labelledby" => "nav-carousel-tab", :role => "tabpanel"}
+              = render "layouts/components/zchome_carousel"
+
+
+#newModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "newModalLabel", :tabindex => "-1"}
+  .modal-dialog.modal-xl.modal-dialog-centered
+    .modal-content
+      -#
+        .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} x 
+      .modal-body
+        = render 'home/map'
