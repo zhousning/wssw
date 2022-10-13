@@ -4,7 +4,7 @@ require 'logger'
 namespace 'db' do
   desc "import categorie"
   task(:import_categories => :environment) do
-    categories = YAML.load_file("lib/tasks/data/jxcategories.yaml")
+    categories = YAML.load_file("lib/tasks/data/wscategories.yaml")
     
     categories.each_with_index do |category, index|
       frst = category[0].to_s

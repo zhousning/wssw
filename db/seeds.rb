@@ -31,17 +31,17 @@ AdminUser.create!(:phone => Setting.admins.phone, :email => Setting.admins.email
 ##集团管理者
 @grp_mgn = [@role_grp]
 
-@gscmpy = Company.create!(:area => "梁山市", :name => "梁山水务")
-@gcfct = Factory.create!(:area => "梁山市", :name => "梁山水务", :company => @gscmpy, :lnt => 116.131779, :lat => 35.765957, :design => 20000)
+@gscmpy = Company.create!(:area => "汶上县", :name => "汶上水务")
+@gcfct = Factory.create!(:area => "汶上县", :name => "汶上水务", :company => @gscmpy, :lnt => 116.131779, :lat => 35.765957, :design => 20000)
 
-User.create!(:phone => "053701016688", :password => "lssw6688", :password_confirmation => "lssw6688", :name => "梁山水务", :roles => @fctmgn,  :factories => [@gcfct])
+User.create!(:phone => "053701019988", :password => "wssw0101", :password_confirmation => "wssw0101", :name => "汶上水务", :roles => @fctmgn,  :factories => [@gcfct])
 
 
 all_factories = Factory.all
 user.factories << all_factories
 
 #集团管理
-grp_mgn = User.create!(:phone => "9116688", :password => "lssw6688", :password_confirmation => "lssw6688", :name => "梁山水务管理者", :roles => @grp_mgn, :factories => all_factories)
+grp_mgn = User.create!(:phone => "9116688", :password => "lssw6688", :password_confirmation => "lssw6688", :name => "汶上水务管理者", :roles => @grp_mgn, :factories => all_factories)
 
 
 HomeContent.create
@@ -63,7 +63,9 @@ Matter.create(:title => "业务办理指南", :background => "3a86fa", :icon => 
 Matter.create(:title => "网上报装申请", :background => "00a1b4", :icon => "desktop")
 
 
-Engine.create(:template => Setting.engines.zctmpt, :consult => true, :des1 => '地址:梁山县水泊西路107号', :des2 => '梁山公用水务有限公司丨鲁ICP备2020045512号-1', :phone => '7360555')
+Engine.create(:template => Setting.engines.zctmpt, :consult => true, :des1 => '地址:汶上县汶上街道普陀山路207号', :des2 => '汶上公用水务有限公司丨鲁ICP备2020045512号-1', :phone => '7292789')
 
-Position.create(content:"梁山区南护城河路66号，客服热线：7721111", title:"梁山公用水务客服中心", lat:35.546362, lnt:116.839957)
-Position.create(content:"梁山区扬州南路2号，区行政审批服务中心，客服热线：7721111", title:"梁山公用水务政务服务中心窗口", lat:35.555239, lnt:116.804108)
+Position.create(content:"汶上县汶上街道普陀山路与宝塔路交汇处东塔景观楼对过自来水收费中心，客服热线：7292789", title:"汶上公用水务客服中心", lat:35.737961, lnt:116.511425)
+
+
+

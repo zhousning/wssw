@@ -19,21 +19,23 @@ zh-CN:
 
   layouts:
     application:
-      site_title: "梁山公用水务有限公司"
+      site_title: "汶上公用水务有限公司"
     application_control:
-      site_title: "梁山公用水务有限公司"
+      site_title: "汶上公用水务有限公司"
     application_control_map:
-      site_title: "梁山公用水务有限公司"
+      site_title: "汶上公用水务有限公司"
     application_mobile:
-      site_title: "梁山公用水务有限公司"
+      site_title: "汶上公用水务有限公司"
     application_home:
-      site_title: "梁山公用水务有限公司"
+      site_title: "汶上公用水务有限公司"
     application_no_header:
-      site_title: "梁山公用水务有限公司"
+      site_title: "汶上公用水务有限公司"
     application_zchome:
-      site_title: "梁山公用水务有限公司"
+      site_title: "汶上公用水务有限公司"
     application_lshome:
-      site_title: "梁山公用水务有限公司"
+      site_title: "汶上公用水务有限公司"
+    application_wshome:
+      site_title: "汶上公用水务有限公司"
   views:
       pagination:
         first: "首页"
@@ -141,7 +143,7 @@ zh-CN:
   trees:
     index:
       title:
-        梁山公用水务有限公司
+        汶上公用水务有限公司
   authorities:
     roles:
       manage:
