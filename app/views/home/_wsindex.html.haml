@@ -48,6 +48,19 @@
           %figcaption
             %h1 工程建设
 
+%section
+  .container
+    .row
+      .col-12.d-flex.justify-content-between.align-items-center
+        - @matters.each do |matter|
+          .rounded{:style => "background: ##{matter.background}"}
+            %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => matter.link, :target => '_blank'}
+              %i.fa.fa-2x.mr-3{:class => "fa-#{matter.icon}"}
+              = matter.title
+        .rounded.bg-648e50
+          %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => "#", "data-target" => "#newModal", "data-toggle" => "modal", :type => "button" }
+            %i.fa.fa-map-o.fa-2x.mr-3
+            服务网点
 
 %section
   .wsheader-container.wsabout-bg
@@ -58,17 +71,16 @@
             汶上公用水务简介
           = render 'wsjj'
 
-      .row
-        .col-12.d-flex.justify-content-between.align-items-center
-          - @matters.each do |matter|
-            .rounded{:style => "background: ##{matter.background}"}
-              %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => matter.link, :target => '_blank'}
-                %i.fa.fa-2x.mr-3{:class => "fa-#{matter.icon}"}
-                = matter.title
-          .rounded.bg-648e50
-            %a.d-flex.align-items-center.py-3.px-4.event-list-btn.text-decoration-none{:href => "#", "data-target" => "#newModal", "data-toggle" => "modal", :type => "button" }
-              %i.fa.fa-map-o.fa-2x.mr-3
-              服务网点
+
+
+%section.mb-3
+  .container
+    .row.flex-box.flex-wrap-wrap
+      - if !@showrooms.blank?
+        - @showrooms.each do |room|
+          .col-sm-3.flex-box.flex-justify-center.flex-align-center
+            = link_to room.photo_url, :class => 'fancybox' do
+              = image_tag room.photo_url, :class => "img-fluid"
 
 
 %section.newsbg
@@ -148,22 +160,4 @@
             %p 
               = image_tag 'wsqrcode.jpeg'
           %a{:href => "#"}
-
-
-
--#
-  .row.clearmargin.clearpadding.row-image-txt
-  .col-xs-12.col-sm-6.col-md-6.clearmargin.clearpadding.col-sm-push-6
-    %img{:src => "assets/img/office-front.jpeg", :style => "width:100%;"}/
-  .col-xs-12.col-sm-6.col-md-6.col-sm-pull-6{:style => "padding:20px;"}
-    %h1 Heading
-    %hr/
-    %p
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel lorem a lectus finibus bibendum ut sagittis diam. Nunc egestas nulla in elit congue, id pellentesque ex semper. Aenean euismod tellus tincidunt massa eleifend, a efficitur lectus
-      ultricies. Aliquam bibendum et leo quis consectetur. Integer consequat consequat mauris, id porttitor sem feugiat eu. Proin ac neque eu nisi viverra mattis. Curabitur molestie lectus ac sollicitudin faucibus. Duis congue ipsum eget justo
-      egestas blandit.
-    %div{:style => "text-align:center"}
-      %button.btn.btn-light.btn-lg{:type => "button"} Lorem
-
-
 
