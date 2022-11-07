@@ -31,7 +31,7 @@ module TemplatesHelper
     if engine.template == Setting.engines.swjt1tmpt
       str = 'application_home'
     elsif engine.template == Setting.engines.swjt2tmpt
-      str = 'application_home'
+      str = 'application_swhome'
     elsif engine.template == Setting.engines.zctmpt
       str = 'application_zchome'
     elsif engine.template == Setting.engines.wstmpt
@@ -44,12 +44,48 @@ module TemplatesHelper
     str
   end
 
+  def engine_newspaper_list(engine) 
+    str = ''
+    if engine.template == Setting.engines.swjt1tmpt
+      str = 'swlist'
+    elsif engine.template == Setting.engines.swjt2tmpt
+      str = 'swlist'
+    elsif engine.template == Setting.engines.zctmpt
+      str = 'swlist'
+    elsif engine.template == Setting.engines.wstmpt
+      str = 'wslist'
+    elsif engine.template == Setting.engines.lstmpt
+      str = 'swlist'
+    elsif engine.template == Setting.engines.jxtmpt
+      str = 'swlist'
+    end
+    str
+  end
+
+  def engine_newspaper_info(engine) 
+    str = ''
+    if engine.template == Setting.engines.swjt1tmpt
+      str = 'swinfo'
+    elsif engine.template == Setting.engines.swjt2tmpt
+      str = 'swinfo'
+    elsif engine.template == Setting.engines.zctmpt
+      str = 'swinfo'
+    elsif engine.template == Setting.engines.wstmpt
+      str = 'wsinfo'
+    elsif engine.template == Setting.engines.lstmpt
+      str = 'swinfo'
+    elsif engine.template == Setting.engines.jxtmpt
+      str = 'swinfo'
+    end
+    str
+  end
+
   def determine_home_index_template(engine)
     str = ''
     if engine.template == Setting.engines.swjt1tmpt
       str = 'home/swjt1index'
     elsif engine.template == Setting.engines.swjt2tmpt
-      str = 'home/swjt1index'
+      str = 'home/swjt2index'
     elsif engine.template == Setting.engines.zctmpt
       str = 'home/zcindex'
     elsif engine.template == Setting.engines.jxtmpt
